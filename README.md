@@ -1,4 +1,5 @@
 # Antigravity CLI Masked Console (Region-Lock Bypass)
+🌍 *[Русская версия ниже](#на-русском)*
 
 This repository provides a seamless conversational wrapper for the official **Antigravity CLI** (`agy`). It bypasses strict regional blocks and Google Account endpoint limitations that cause the interactive Terminal User Interface (TUI) to crash or throw `Eligibility check failed` errors.
 
@@ -25,7 +26,7 @@ This wrapper (`agy-cli.py`) handles:
 Ensure you have `agy` installed and added to your system `$PATH`, as well as Python 3.
 
 ```bash
-git clone https://github.com/your-username/agy-bypass.git
+git clone https://github.com/komu-to/agy-bypass.git
 cd agy-bypass
 
 # Make it executable and link it globally
@@ -50,3 +51,56 @@ agy-cli --model "Gemini 3.5 Flash (High)" --proxy "socks5h://127.0.0.1:1080"
 
 ## License
 MIT License. Feel free to fork and improve!
+
+---
+
+# На русском
+
+Этот репозиторий содержит удобную консольную обертку для официального приложения **Antigravity CLI** (`agy`). Она позволяет обойти жесткие региональные блокировки (Region Lock) и ограничения аккаунтов Google, из-за которых интерактивный псевдографический интерфейс (TUI) мгновенно закрывается с ошибкой `Eligibility check failed`.
+
+## Проблема
+При доступе к Antigravity CLI с IP-адресов дата-центров (VPN, VPS, AWS, Datacamp) или из неподдерживаемых локаций Google API блокирует загрузку рабочего интерфейса в рамках проверки региона.
+
+```text
+⚠ Eligibility Check
+  ⎿  Eligibility check failed: Your current account is not eligible ...
+```
+
+## Решение
+Внутри `agy` есть аргумент фонового выполнения (`--print`). Запросы через `--print` уходят в обход проверки аккаунта `loadCodeAssist` для UI, напрямую общаясь с интерфейсом генерации. Эндпоинты генерации проверяют локации гораздо менее строго!
+
+Эта обертка (`agy-cli.py`):
+- Полностью имитирует интерактивный чат (REPL), читая и записывая потоки ввода/вывода.
+- Сохраняет контекст беседы, используя внутренние аргументы `--continue` и `--new-project`.
+- Исправляет падения с `UnicodeDecodeError`, возникающие при нестандартной передаче кириллицы через некоторые SSH-клиенты (работает с сырыми байтами UTF-8).
+- Умеет прозрачно "пробрасывать" SOCKS5 и HTTP прокси прямо в процесс Go.
+
+## Установка
+
+Для работы утилиты у вас уже должен быть установлен сам бинарник `agy` и язык Python 3.
+
+```bash
+git clone https://github.com/komu-to/agy-bypass.git
+cd agy-bypass
+
+chmod +x agy-cli.py
+sudo ln -s $(pwd)/agy-cli.py /usr/local/bin/agy-cli
+```
+
+## Использование
+
+Просто напишите в терминале:
+```bash
+agy-cli
+```
+
+### Флаги
+```bash
+agy-cli --model "Gemini 3.5 Flash (High)" --proxy "socks5h://127.0.0.1:1080"
+```
+- `-m, --model`: Позволяет выбрать модель-движок. По умолчанию стартует с `Gemini 3.1 Pro (High)`.
+- `-p, --proxy`: URL вашего прокси. Если не указано, автоматически ищет системную переменную `HTTP_PROXY` или использует дефолтный адрес.
+- `--no-proxy`: Отключает любые прокси, принудительно направляя трафик с нативного интерфейса.
+
+## Лицензия
+MIT License. Пользуйтесь и модифицируйте без ограничений!
