@@ -19,6 +19,7 @@ License: MIT
 
 import subprocess
 import os
+import shutil
 import sys
 import argparse
 
@@ -108,8 +109,13 @@ def main():
             # 2. Inform the user we are processing
             print(f"\n{COLOR_YELLOW}[Agy] (thinking...){COLOR_RESET}")
             
-            # 3. Construct the backend shell array
-            cmd = ["agy", "--model", args.model]
+            # 3. Resolve binary and construct the backend shell array
+            agy_bin = shutil.which("agy") or shutil.which("agy.exe")
+            if not agy_bin:
+                print(f"{COLOR_RED}[Fatal]{COLOR_RESET} Antigravity binary ('agy' / 'agy.exe') not found in system PATH.")
+                break
+                
+            cmd = [agy_bin, "--model", args.model]
             
             # First turn forces a fresh slate, subsequent turns use Antigravity's continuity 
             if is_first_turn:
