@@ -25,6 +25,11 @@ This wrapper (`agy-cli.py`) handles:
 
 Ensure you have `agy` installed and added to your system `$PATH`, as well as Python 3.
 
+### Windows (Standalone EXE)
+You don't need Python to run this on Windows! We automatically build a standalone `.exe` using GitHub Actions.
+Simply head over to the **[Actions tab](https://github.com/komu-to/agy-bypass/actions)**, click the latest successful run, and download the `agy-cli-windows` artifact.
+
+
 ```bash
 git clone https://github.com/komu-to/agy-bypass.git
 cd agy-bypass
@@ -79,6 +84,11 @@ MIT License. Feel free to fork and improve!
 ## Установка
 
 Для работы утилиты у вас уже должен быть установлен сам бинарник `agy` и язык Python 3.
+
+### Для пользователей Windows (Автономный EXE)
+Вам даже не нужно устанавливать Python! Готовый `.exe` файл собирается автоматически с помощью GitHub Actions.
+Перейдите на вкладку **[Actions](https://github.com/komu-to/agy-bypass/actions)**, откройте последнюю сборку и скачайте архив `agy-cli-windows` в самом низу.
+
 
 ```bash
 git clone https://github.com/komu-to/agy-bypass.git
