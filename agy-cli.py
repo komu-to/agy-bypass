@@ -54,7 +54,7 @@ def get_parser() -> argparse.ArgumentParser:
         help="Proxy URL (socks5h://... or http://...). By default reads HTTP_PROXY from environment."
     )
     parser.add_argument(
-        "-a", "--auto-approve", 
+        "-a", "-y", "--auto-approve", "--yes",
         action="store_true", 
         help="Auto-approve all tool permission requests (--dangerously-skip-permissions)."
     )
