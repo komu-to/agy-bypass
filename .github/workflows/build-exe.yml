@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -30,7 +30,7 @@ jobs:
         pyinstaller --onefile --name agy-cli.exe --icon=NONE --console agy-cli.py
 
     - name: Upload EXE artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: agy-cli-windows
         path: dist/agy-cli.exe
