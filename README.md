@@ -43,9 +43,10 @@ agy-cli
 
 ### Options
 ```bash
-agy-cli --model "Gemini 3.5 Flash (High)" --proxy "socks5h://127.0.0.1:1080"
+agy-cli --model "Gemini 3.5 Flash (High)" -a
 ```
 - `-m, --model`: Provide any Antigravity-supported model. Default: `Gemini 3.1 Pro (High)`.
+- `-a, --auto-approve`: Auto-approve all sandbox/permission prompts (injects `--dangerously-skip-permissions`). Required for tools in headless mode.
 - `-p, --proxy`: Proxy URL that overrides the default. By default, it looks for `HTTP_PROXY` in the environment.
 - `--no-proxy`: Forces direct connection, stripping all injected proxies.
 
@@ -96,9 +97,10 @@ agy-cli
 
 ### Флаги
 ```bash
-agy-cli --model "Gemini 3.5 Flash (High)" --proxy "socks5h://127.0.0.1:1080"
+agy-cli --model "Gemini 3.5 Flash (High)" -a
 ```
 - `-m, --model`: Позволяет выбрать модель-движок. По умолчанию стартует с `Gemini 3.1 Pro (High)`.
+- `-a, --auto-approve`: Автоматически одобряет все запросы модели на выполнение команд (подставляет флаг `--dangerously-skip-permissions`). Незаменимо для фонового выполнения, где нельзя нажать 'Y'.
 - `-p, --proxy`: URL вашего прокси. Если не указано, автоматически ищет системную переменную `HTTP_PROXY` или использует дефолтный адрес.
 - `--no-proxy`: Отключает любые прокси, принудительно направляя трафик с нативного интерфейса.
 

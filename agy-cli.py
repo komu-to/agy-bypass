@@ -54,6 +54,11 @@ def get_parser() -> argparse.ArgumentParser:
         help="Proxy URL (socks5h://... or http://...). Defaults to internal VPN proxy."
     )
     parser.add_argument(
+        "-a", "--auto-approve", 
+        action="store_true", 
+        help="Auto-approve all tool permission requests (--dangerously-skip-permissions)."
+    )
+    parser.add_argument(
         "--no-proxy", 
         action="store_true", 
         help="Disable proxy injection completely."
@@ -117,6 +122,9 @@ def main():
                 
             cmd = [agy_bin, "--model", args.model]
             
+            if args.auto_approve:
+                cmd.append("--dangerously-skip-permissions")
+
             # First turn forces a fresh slate, subsequent turns use Antigravity's continuity 
             if is_first_turn:
                 cmd.append("--new-project")
