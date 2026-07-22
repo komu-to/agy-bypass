@@ -120,7 +120,7 @@ def main():
                 print(f"{COLOR_RED}[Fatal]{COLOR_RESET} Antigravity binary ('agy' / 'agy.exe') not found in system PATH.")
                 break
                 
-            cmd = [agy_bin, "--model", args.model]
+            cmd = [agy_bin, "--model", args.model, "--print-timeout", "60m0s"]
             
             if args.auto_approve:
                 cmd.append("--dangerously-skip-permissions")
