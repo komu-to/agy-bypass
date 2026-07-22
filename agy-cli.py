@@ -50,8 +50,8 @@ def get_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "-p", "--proxy", 
         type=str, 
-        default=os.environ.get("HTTP_PROXY", "socks5h://10.9.9.2:1080"),
-        help="Proxy URL (socks5h://... or http://...). Defaults to internal VPN proxy."
+        default=os.environ.get("HTTP_PROXY"),
+        help="Proxy URL (socks5h://... or http://...). By default reads HTTP_PROXY from environment."
     )
     parser.add_argument(
         "-a", "--auto-approve", 
