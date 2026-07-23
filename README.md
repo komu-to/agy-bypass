@@ -51,7 +51,7 @@ agy-cli
 agy-cli --model "Gemini 3.5 Flash (High)" -y
 ```
 - `-m, --model`: Provide any Antigravity-supported model. Default: `Gemini 3.1 Pro (High)`.
-- `-c, --continue-session`: Resume memory from your last closed session.
+- `-n, --new`: Start a fresh new project instead of resuming memory from the last session.
 - `-y, -a, --yes`: Auto-approve all sandbox/permission prompts (injects `--dangerously-skip-permissions`). Required for tools in headless mode.
 - `-p, --proxy`: Proxy URL that overrides the default. By default, it looks for `HTTP_PROXY` in the environment.
 - `--no-proxy`: Forces direct connection, stripping all injected proxies.
@@ -111,7 +111,7 @@ agy-cli
 agy-cli --model "Gemini 3.5 Flash (High)" -y
 ```
 - `-m, --model`: Позволяет выбрать модель-движок. По умолчанию стартует с `Gemini 3.1 Pro (High)`.
-- `-c, --continue-session`: Восстановить контекст и память из последней закрытой сессии.
+- `-n, --new`: Начать проект с чистого листа вместо восстановления памяти из прошлой сессии.
 - `-y, -a, --yes`: Автоматически одобряет все запросы модели на выполнение команд (подставляет флаг `--dangerously-skip-permissions`). Незаменимо для фонового выполнения, где нельзя нажать 'Y'.
 - `-p, --proxy`: URL вашего прокси. Если не указано, автоматически ищет системную переменную `HTTP_PROXY` или использует дефолтный адрес.
 - `--no-proxy`: Отключает любые прокси, принудительно направляя трафик с нативного интерфейса.

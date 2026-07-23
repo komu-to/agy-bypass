@@ -59,9 +59,9 @@ def get_parser() -> argparse.ArgumentParser:
         help="Auto-approve all tool permission requests (--dangerously-skip-permissions)."
     )
     parser.add_argument(
-        "-c", "--continue-session", 
+        "-n", "--new", 
         action="store_true", 
-        help="Continue the last session instead of starting a fresh one."
+        help="Start a fresh new project instead of continuing the last session memory."
     )
     parser.add_argument(
         "--no-proxy", 
@@ -131,7 +131,7 @@ def main():
                 cmd.append("--dangerously-skip-permissions")
 
             # First turn forces a fresh slate, subsequent turns use Antigravity's continuity 
-            if is_first_turn and not args.continue_session:
+            if is_first_turn and args.new:
                 cmd.append("--new-project")
             else:
                 cmd.append("--continue")
